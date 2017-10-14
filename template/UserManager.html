@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ static_url('css/bootstrap.css') }}">
+</head>
+<body>
+
+
+<div align="left">
+    <form name="new_user" action="AddUser" method="post">{% raw xsrf_form_html() %}
+        <div style="width: 200px;">
+            Name: <input type="text" name="user_name" class="form-control"/>
+            Age: <input type="text" name="user_age" class="form-control"/>
+            Sex: <input type="text" name="user_sex" class="form-control"/>
+            Score: <input type="text" name="user_score" class="form-control"/>
+            Subject: <input type="text" name="user_subject" class="form-control"/>
+            <input type="submit" value="Submit" class="btn btn-default" />
+            <input type="reset" value="Reset" class="btn btn-default" />
+        </div>
+    </form>
+
+    <table class="table table-bordered">
+        <tr style="font-weight: bold" align="center">
+            <td width="200">Name</td>
+            <td width="200">Age</td>
+            <td width="200">Sex</td>
+            <td width="200">Score</td>
+            <td width="200">Subject</td>
+            <td width="100"></td>
+            <td width="100"></td>
+        </tr>
+
+        {% for user in users %}
+            <tr align="center">
+                <td width="200">{{ user.user_name }}</td>
+                <td width="200">{{ user.user_age }}</td>
+                <td width="200">{{ user.user_sex }}</td>
+                <td width="200">{{ user.user_score }}</td>
+                <td width="200">{{ user.user_subject }}</td>
+                <td width="200" ><a href="EditUser?user_name={{ user.user_name }}" class="btn btn-default">Edit</a></td>
+                <td width="200" ><a href="DeleteUser?user_name={{ user.user_name}}" class="btn btn-default">Delete</a></td>
+            </tr>
+        {% end %}
+    </table>
+</div>
+</body>
+</html>

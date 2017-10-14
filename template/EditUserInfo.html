@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Info</title>
+</head>
+<body>
+<h1>Edit User Info </h1>
+<hr/>
+<center>
+<form name="edit_user_info" action="UpdateUserInfo" method="post">{% raw xsrf_form_html() %}
+    Name: <input type="text" name="user_name" value="{{ user_info.user_name }}" readonly>
+    Age: <input type="text" name="user_age" value="{{ user_info.user_age }}" >
+    Sex: <input type="text" name="user_sex" value="{{ user_info.user_sex }}" >
+    Score: <input type="text" name="user_score" value="{{ user_info.user_score }}" >
+    Subject: <input type="text" name="user_subject" value="{{ user_info.user_subject }}" >
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+
+</form>
+</center>
+<hr/>
+
+
+
+</body>
+</html>
